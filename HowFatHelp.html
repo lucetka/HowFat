@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> New Document </TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="Lucie Kalvodova">
+<META NAME="Keywords" CONTENT="HowFat, band quantification, SDS-PAGE, gel, western blot, TLC">
+<META NAME="Description" CONTENT="Help for HowFat">
+</HEAD>
+
+<BODY>
+<H1>How to use HowFat v0.5</H1>
+<P>
+<H2>Limitations</H2>
+<UL>
+
+	<LI>Supported formats: <FONT SIZE="" COLOR="crimson">bitmap, jpeg</FONT>
+	<li>Please do not load the same picture several times without quitting the program - this might lead to unexpected results :) - will be fixed in the next version (maybe...)
+	<LI>Please note that HowFat is not yet idiotproof..will be fixed soon
+</UL>
+<P>
+<H2>Version and Revision History</H2>
+<UL>
+	<LI>v 0.4.1. - <FONT SIZE="" COLOR="crimson">improved file output</FONT>. You can easily import your output to excel or similar by starting import at row 4 and selecting "delimited" with "semicolon" as the delimiter; this version was never "released"
+	<LI>v 0.5 - changed interface a bit; <FONT SIZE="" COLOR="crimson">supports scrolling</FONT>!
+	
+</UL>
+
+<P>
+<HR>
+<P>
+<H2>General concept</H2>
+HowFat is a simple software for gel band quantification. It allows the user to select a rectangular area anywhere in the picture. This selected area can be assigned a name and also mass, thus setting it as standard. 
+You can therefore estimate for example concentration of your protein prep from an SDS gel - you simply load several standards, eg. 50, 100, 150, 200, 300 and 500 ng of BSA per lane and your sample, preferably different amounts for more reliable estimation. You then make a calibration curve from the standards and quantify the sample of interest by comparing to this calibration curve. This software is also useful for comparing relative intensities of the bands, ie in homogenity estimation, PCR reaction efficiency etc.
+<P>
+<HR>
+<P>
+<H2>How it works</H2>
+HowFat takes every single pixel of the selected area, converts its color value to grayscale value and sums up all the pixel intensities, thus obtaining the integral intensity of the band, which, within certain mass limits, is directly proportional to the mass in the band. Band information comprising name of the band, coordinates of the selected area, user-defined mass in case of standard (or when the selected area was set to stand for background in which case the mass shoud be set to 0), and the integral intensity is then exported into a text file in such a format that it can be easily imported to a spreadsheet (eg Excel) and processed. <BR>
+No correction for background is implememted in this version.
+<P>
+<HR>
+<P>
+<H2>How to process your gel</H2>
+<UL>
+	<LI> Open the gel picture (File -> Open). ( Supported formats are bmp and jp(e)g  )
+	 
+	<LI> Select bands
+	<li> Select "Export raw band information" from the "Run!" menu
+	<li>Import the generated file into Excel (start at row 4, delimited, <FONT SIZE="" COLOR="crimson">semicolon as delimiter</FONT>)
+</UL>
+<P>
+If you need to take background in account, you can do it manually:<BR>
+
+<UL>
+	<LI>Select an area with no bands and save it as "Standard" with 0 mass
+	<LI>average background value = integral intensity of the background / area,<P>
+where area is (X2-X1-2)x(Y1-Y2-2).<P>
+<li>corrected intensity = integral intensity - ( average background value)x(area of the band) )<P>
+
+</UL>
+
+
+
+However, this correction is only needed for not well destained gels or westerns with serious background.
+<P>
+<HR>
+-- LK
+</BODY>
+</HTML>

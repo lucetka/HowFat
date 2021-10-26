@@ -1,0 +1,1 @@
+kdyz dam listu uplne na konec a pak resize, tak se scrollbar nenastavi na spravnou hodnotu
